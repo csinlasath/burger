@@ -1,1 +1,53 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-4"><i class="fas fa-hamburger"></i>Eat-Da-Burger<i class="fas fa-hamburger"></i></h1>
+    <p class="lead">Submit a burger below to start tracking.</p>
+  </div>
+</div>
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Burgers Yet to Be Devoured</h2>
+      <ul class="list-group">
+        {{#each burgers}}
+        {{#unless devoured}}
+        <li class="list-group-item">
+          <p class="burger-text">{{this.burger_name}}</p>
+          <button id={{this.id}} data-isDevoured={{this.devoured}}
+            class="btn btn-danger devourButton">Devour it</button>
+        </li>
+        {{/unless}}
+        {{/each}}
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <h2>Burgers That Lost Their Lives</h2>
+      <ul class="list-group">
+        {{#each burgers}}
+        {{#if devoured}}
+        <li class="list-group-item">
+          <p class="burger-text">{{this.burger_name}}</p>
+        </li>
+        {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div id="burger-form" class="container">
+  <h2>Add a Burger</h2>
+  <form class="create-form">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Burger Name</span>
+      </div>
+      <textarea id="burgerTextField" class="form-control"></textarea>
+      <div class="input-group-append">
+        <button id="burgerSubmitButton" type="submit" class="btn btn-secondary">Add Burger</button>
+      </div>
+    </div>
+  </form>
+</div>
